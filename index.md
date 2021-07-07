@@ -63,6 +63,5 @@ Converted all images to matrices representing each pixel's RGB values using the 
 Working on resizing: Making all images the same size by "padding" small images to match size of largest ones and currently evaluating best method to accomplish this (must also have algorithm "ignore" padding)
 
 Machine Learning: 
-Currently working on a clustering model that can be used to classify using the K-means algorithm
-
+Currently researching image segmentation using image segmentation using K-means clustering (similar examples with CT scans)
 
