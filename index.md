@@ -4,6 +4,8 @@
 
 ![Info](https://user-images.githubusercontent.com/31289084/121968442-573abb80-cd40-11eb-89e1-f002ce4db711.png)
 
+## Proposal 
+
 ### Introduction/Background
 We aim to improve accuracy and reduce costs associated with human inspection by using machine learning to identify tumors in brain scans of patients. Currently doctors have to manually classify scans. By creating a machine learning algorithm that can correctly label images with tumors, we can quickly and accurately analyze large numbers of brain scans, reducing demands on doctors whose time could be spent better assisting patients. Our goal is to formulate an algorithm that can identify tumors in patients faster and with more accuracy than humans. Our algorithm should be able to correctly identify tumors for a diverse set of patients of different ages, and tumors in various stages of growth.
 
@@ -50,5 +52,17 @@ These literary references will help us decide which algorithms and models to use
 
     In this recent paper, the researchers use an "image analysis scheme" called CNN (Convolutional Neural Network) Deep Net which classifies a tumor as benign or malignant. Basically CNN takes an input image, assigns weights to different objects in the image, and so now you can differentiate one object from another.
 
+## Unsupervised Learning
+
+Data Cleaning: 
+
+Removed any files that are not RGB JPEG images -> Left with 98% of files (4,373 images)​
+
+Converted all images to matrices representing each pixel's RGB values using the skimage.io/PIL.Image module​
+
+Working on resizing: Making all images the same size by "padding" small images to match size of largest ones and currently evaluating best method to accomplish this (must also have algorithm "ignore" padding)
+
+Machine Learning: 
+Currently working on a clustering model that can be used to classify using the K-means algorithm
 
 
