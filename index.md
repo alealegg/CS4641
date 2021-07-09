@@ -56,15 +56,15 @@ These literary references will help us decide which algorithms and models to use
 
 ### Data Cleaning:
 
-To convert our images to usable data, we took the following steps: 
-* Removed any files that are not sqare, RGB, JPEG images (1598 image files remained in the data set)
-* Converted the remaining images grayscale and resized them to be the same number of pixels using the skimage module
+To convert our images to usable data, we did the following: 
+* Removed any files that are not square, RGB, JPEG images (1598 image files remained in the data set)
+* Converted the remaining images from RGB to grayscale and resized them to all be the same number of pixels using the skimage module
 * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
-Once we cleaned our data, we were ready to run unsupervised machine learning techniques. 
+Once we cleaned and organized our data, we ran unsupervised machine learning techniques. We applied clustering algorithms with the goal of clustering the data into two groups (ideally one that represented healthy scans and one that represented brain tumor scans). 
 
 ### Clustering with K-Means
-We applied the K-Means algorithm using the sklearn.cluster module with the goal of clustering the data. We applied this algorithm with two clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data had many features (one feature for each pixel), PCA allows us to reduce the numbber of features while still maintaining the information the features provide. PCA also allowed us to visualize the images in their clusters. 
+We applied the K-Means algorithm using the sklearn.cluster module where n = 2 clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data has a very large set of features (one feature for each pixel), PCA allows us to reduce the number of features while still maintaining most of the information that the features provide. PCA also allowed us to visualize the images in their clusters. 
 
 ![kmeans](https://user-images.githubusercontent.com/31289084/125023981-ec825480-e04d-11eb-8111-561aed4631a2.png)
 
@@ -76,13 +76,16 @@ We also applied the DBSCAN algorithm.
 Discuss how the parameters were determined, insert the image, and discuss the results
 
 ### Applying Filters to Reduce Noise
-The lack of accuracy in the results  results of the above clustering algorithms show that our images probably contain a lot of noise. We tried applying a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
+The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
 
 ![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023785-90b7cb80-e04d-11eb-95b3-2a414e604983.png)
 
 ![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023930-d2e10d00-e04d-11eb-99e5-ab07315bc27f.png)
 
+While the filter did not make any major changes to the K-Means clusters, there was a change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
+
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some lose of information for some images but it overall improved the model. 
+
 
 ### Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
