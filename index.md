@@ -74,4 +74,14 @@ We also applied the DBSCAN algorithm.
 Discuss how the parameters were determined, insert the image, and discuss the results
 
 ### Applying filters to reduce noise
+The lack of accuracy in the results  results of the above clustering algorithms show that our images probably contain a lot of noise. We tried applying a filter to reduce this noise in the hopes of attaining more accurate clustering. 
 
+### Resources and References Used
+* https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
+* https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/, 
+* https://note.nkmk.me/en/python-numpy-image-processing/
+* https://scikit-image.org/docs/dev/api/skimage.io.html#skimage.io.imread
+* https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans
+* https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html?highlight=dbscan
+* https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_digits.html#sphx-glr-auto-examples-cluster-plot-kmeans-digits-py
+* https://medium.com/image-vision/noise-filtering-in-digital-image-processing-d12b5266847c
