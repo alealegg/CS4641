@@ -57,11 +57,11 @@ These literary references will help us decide which algorithms and models to use
 ### Data Cleaning:
 
 To convert our images to usable data, we took the following steps: 
-* Removed any files that are not sqare, RGB, JPEG images
+* Removed any files that are not sqare, RGB, JPEG images (1598 image files remained in the data set)
 * Converted the remaining images grayscale and resized them to be the same number of pixels using the skimage module
 * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
-Once we cleaned our data, we were ready to run unsupervised Machine Learning techniques. 
+Once we cleaned our data, we were ready to run unsupervised machine learning techniques. 
 
 ### Clustering with K-Means
 We applied the K-Means algorithm using the sklearn.cluster module with the goal of clustering the data. We applied this algorithm with two clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data had many features (one feature for each pixel), PCA allows us to reduce the numbber of features while still maintaining the information the features provide. PCA also allowed us to visualize the images in their clusters. 
@@ -73,8 +73,17 @@ We also applied the DBSCAN algorithm.
 
 Discuss how the parameters were determined, insert the image, and discuss the results
 
-### Applying filters to reduce noise
-The lack of accuracy in the results  results of the above clustering algorithms show that our images probably contain a lot of noise. We tried applying a filter to reduce this noise in the hopes of attaining more accurate clustering. 
+### Applying Filters to Reduce Noise
+The lack of accuracy in the results  results of the above clustering algorithms show that our images probably contain a lot of noise. We tried applying a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
+
+![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023502-0707fe00-e04d-11eb-99d2-beff598bba72.png)
+
+![eps_filtered](https://user-images.githubusercontent.com/31289084/125023526-0f603900-e04d-11eb-85d2-e03d883c1e58.png)
+
+![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023513-0a9b8500-e04d-11eb-968c-a0e47661dfdb.png)
+
+
+Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some lose of information for some images but it overall improved the model. 
 
 ### Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
@@ -84,4 +93,6 @@ The lack of accuracy in the results  results of the above clustering algorithms 
 * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans
 * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html?highlight=dbscan
 * https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_digits.html#sphx-glr-auto-examples-cluster-plot-kmeans-digits-py
+* https://scikit-image.org/docs/dev/api/skimage.restoration.html#skimage.restoration.denoise_bilateral
 * https://medium.com/image-vision/noise-filtering-in-digital-image-processing-d12b5266847c
+* https://www.intechopen.com/books/high-resolution-neuroimaging-basic-physical-principles-and-clinical-applications/mri-medical-image-denoising-by-fundamental-filters
