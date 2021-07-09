@@ -72,7 +72,7 @@ In the above image, the orange segment of the visual indicates images that our m
 
 ### Clustering with DBSCAN
 We also applied the DBSCAN algorithm. 
-
+![DBSCAN Nonfiltered Images](https://user-images.githubusercontent.com/84369101/125132312-25fca380-e0d2-11eb-812d-ff926b986643.png)
 Discuss how the parameters were determined, insert the image, and discuss the results
 
 ### Applying Filters to Reduce Noise
