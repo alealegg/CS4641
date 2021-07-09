@@ -68,7 +68,7 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 
 ![kmeans](https://user-images.githubusercontent.com/31289084/125023981-ec825480-e04d-11eb-8111-561aed4631a2.png)
 
-In the above image, the orange segment of the visual represents the images that our model labeled as cancerous. To improve the overall clustering of the right-hand side, we will incorporate a greater volume of "healthy" images in our pre-processed data. Doing so may improve the model's performance and allow us to see a more definitive cluster of healthy brain scans. Currently 615 of the 1599 images are of non-cancerous scans (38%).
+In the above image, the orange segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. To improve the overall clustering, we should incorporate a greater volume of "healthy" images in our cleaned data. Doing so may improve the model's performance and allow us to see the two clusters more definitively. Currently 615 of the 1599 "cleaned" images (38%) are of non-cancerous (healthy) scans.
 
 ### Clustering with DBSCAN
 We also performed a preliminary application of the DBSCAN algorithm to see if we could gain more insight on our results. 
@@ -80,7 +80,7 @@ After plotting the elbow method, we used eps = 2.5 as a rough estimate of the id
 
 ![DBSCAN Nonfiltered Images](https://user-images.githubusercontent.com/84369101/125132312-25fca380-e0d2-11eb-812d-ff926b986643.png)
 
-DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). Despite the excessive clustering, the large blue cluster appears to classify cancerous images with an acceptable initial degree of accuracy.
+DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). Despite the excessive clustering, the large blue cluster appears to classify images with an acceptable initial degree of accuracy.
 
 ### Applying Filters to Reduce Noise
 The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
