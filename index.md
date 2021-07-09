@@ -66,7 +66,9 @@ Once we cleaned our data, we were ready to run unsupervised machine learning tec
 ### Clustering with K-Means
 We applied the K-Means algorithm using the sklearn.cluster module with the goal of clustering the data. We applied this algorithm with two clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data had many features (one feature for each pixel), PCA allows us to reduce the numbber of features while still maintaining the information the features provide. PCA also allowed us to visualize the images in their clusters. 
 
-Insert K-Means Cluster Image and discuss the results
+![kmeans](https://user-images.githubusercontent.com/31289084/125023981-ec825480-e04d-11eb-8111-561aed4631a2.png)
+
+Discuss the results
 
 ### Clustering with DBSCAN
 We also applied the DBSCAN algorithm. 
