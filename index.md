@@ -91,7 +91,7 @@ The lack of accuracy in the results of the above clustering algorithms show that
 
 While the filter did not make any major changes to the K-Means clusters, there was a change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
 
-Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some lose of information for some images but it overall improved the model. 
+Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some loss of information for some images but it overall improved the model. 
 
 
 ### Resources and References Used
