@@ -76,12 +76,9 @@ Discuss how the parameters were determined, insert the image, and discuss the re
 ### Applying Filters to Reduce Noise
 The lack of accuracy in the results  results of the above clustering algorithms show that our images probably contain a lot of noise. We tried applying a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
 
-![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023502-0707fe00-e04d-11eb-99d2-beff598bba72.png)
+![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023785-90b7cb80-e04d-11eb-95b3-2a414e604983.png)
 
-![eps_filtered](https://user-images.githubusercontent.com/31289084/125023526-0f603900-e04d-11eb-85d2-e03d883c1e58.png)
-
-![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023513-0a9b8500-e04d-11eb-968c-a0e47661dfdb.png)
-
+![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023773-8bf31780-e04d-11eb-84b1-7e73dfd93b7b.png)
 
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some lose of information for some images but it overall improved the model. 
 
