@@ -63,6 +63,15 @@ To convert our images to usable data, we took the following steps:
 
 Once we cleaned our data, we were ready to run unsupervised Machine Learning techniques. 
 
-### Machine Learning: 
+### Clustering with K-Means
+We applied the K-Means algorithm using the sklearn.cluster module with the goal of clustering the data. We applied this algorithm with two clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data had many features (one feature for each pixel), PCA allows us to reduce the numbber of features while still maintaining the information the features provide. PCA also allowed us to visualize the images in their clusters. 
 
+Insert K-Means Cluster Image and discuss the results
+
+### Clustering with DBSCAN
+We also applied the DBSCAN algorithm. 
+
+Discuss how the parameters were determined, insert the image, and discuss the results
+
+### Applying filters to reduce noise
 
