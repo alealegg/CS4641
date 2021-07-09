@@ -71,9 +71,16 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 In the above image, the orange segment of the visual indicates images that our model labeled as cancerous. To improve the overall clustering of the right-hand side, we will incorporate a greater volume of "healthy" images in our pre-processed data. Doing so may improve the model's performance and allow us to see a more definitive cluster of healthy brain scans. Currently 615 of the 1599 images are of non-cancerous scans (38%).
 
 ### Clustering with DBSCAN
-We also applied the DBSCAN algorithm. 
+We also performed a preliminary application of the DBSCAN algorithm to see if we could gain more insight on our results. 
+
+![Elbow Method for eps](https://user-images.githubusercontent.com/84369101/125132988-28133200-e0d3-11eb-8309-91a84eb56fd3.png)
+
+
+After plotting the elbow method, we used eps = 2.5 as a rough estimate of the ideal neighborhood parameter. Since the data is two-dimensional we opted for min_pts = 2x2 = 4. 
+
 ![DBSCAN Nonfiltered Images](https://user-images.githubusercontent.com/84369101/125132312-25fca380-e0d2-11eb-812d-ff926b986643.png)
-Discuss how the parameters were determined, insert the image, and discuss the results
+
+DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). Despite the excessive clustering, the large blue cluster appears to classify cancerous images with an acceptable initial degree of accuracy.
 
 ### Applying Filters to Reduce Noise
 The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
