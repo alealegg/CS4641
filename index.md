@@ -68,7 +68,7 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 
 ![kmeans](https://user-images.githubusercontent.com/31289084/125023981-ec825480-e04d-11eb-8111-561aed4631a2.png)
 
-In the above image, the large cluster on the left indicates images that our model labeled as cancerous. To improve the overall clustering of the right-hand side, we will incorporate a greater volume of "healthy" images in our pre-processed data. Doing so may allow us to see a more clear and definitive cluster of healthy brain scans. Currently 615 of the 1599 images are of non-cancerous scans (38%).
+In the above image, the orange segment of the visual indicates images that our model labeled as cancerous. To improve the overall clustering of the right-hand side, we will incorporate a greater volume of "healthy" images in our pre-processed data. Doing so may improve the model's performance and allow us to see a more definitive cluster of healthy brain scans. Currently 615 of the 1599 images are of non-cancerous scans (38%).
 
 ### Clustering with DBSCAN
 We also applied the DBSCAN algorithm. 
