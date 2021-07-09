@@ -57,9 +57,9 @@ These literary references will help us decide which algorithms and models to use
 ### Data Cleaning:
 
 To convert our images to usable data, we took the following steps: 
-    * Removed any files that are not sqare, RGB, JPEG images
-    * Converted the remaining images grayscale and resized them to be the same number of pixels using the skimage module
-    * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
+    *Removed any files that are not sqare, RGB, JPEG images
+    *Converted the remaining images grayscale and resized them to be the same number of pixels using the skimage module
+    *Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
 Once we cleaned our data, we were ready to run unsupervised Machine Learning techniques. 
 
