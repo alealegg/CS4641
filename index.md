@@ -78,7 +78,7 @@ The lack of accuracy in the results  results of the above clustering algorithms 
 
 ![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023785-90b7cb80-e04d-11eb-95b3-2a414e604983.png)
 
-![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023773-8bf31780-e04d-11eb-84b1-7e73dfd93b7b.png)
+![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023930-d2e10d00-e04d-11eb-99e5-ab07315bc27f.png)
 
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some lose of information for some images but it overall improved the model. 
 
