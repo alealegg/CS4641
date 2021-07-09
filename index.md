@@ -1,10 +1,10 @@
 # Predicting Whether a Patient Has a Brain Tumor From a Brain Scan
 
-**Team Members:** Alea Legg, Brennan Oconnor, Emma Verret, Mark Wetherly
-
-![Info](https://user-images.githubusercontent.com/31289084/121968442-573abb80-cd40-11eb-89e1-f002ce4db711.png)
+**Team Members:** Alea Legg, Brennan Oconnor, Mark Wetherly
 
 ## Proposal 
+
+![Info](https://user-images.githubusercontent.com/31289084/121968442-573abb80-cd40-11eb-89e1-f002ce4db711.png)
 
 ### Introduction/Background
 We aim to improve accuracy and reduce costs associated with human inspection by using machine learning to identify tumors in brain scans of patients. Currently doctors have to manually classify scans. By creating a machine learning algorithm that can correctly label images with tumors, we can quickly and accurately analyze large numbers of brain scans, reducing demands on doctors whose time could be spent better assisting patients. Our goal is to formulate an algorithm that can identify tumors in patients faster and with more accuracy than humans. Our algorithm should be able to correctly identify tumors for a diverse set of patients of different ages, and tumors in various stages of growth.
@@ -54,14 +54,15 @@ These literary references will help us decide which algorithms and models to use
 
 ## Unsupervised Learning
 
-Data Cleaning: 
+### Data Cleaning:
 
-Removed any files that are not RGB JPEG images -> Left with 98% of files (4,373 images)​
+To convert our images to usable data, we took the following steps: 
+    * Removed any files that are not sqare, RGB, JPEG images
+    * Converted the remaining images grayscale and resized them to be the same number of pixels using the skimage module
+    * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
-Converted all images to matrices representing each pixel's RGB values using the skimage.io/PIL.Image module​
+Once we cleaned our data, we were ready to run unsupervised Machine Learning techniques. 
 
-Working on resizing: Making all images the same size by "padding" small images to match size of largest ones and currently evaluating best method to accomplish this (must also have algorithm "ignore" padding)
+### Machine Learning: 
 
-Machine Learning: 
-Currently researching image segmentation using image segmentation using K-means clustering (similar examples with CT scans)
 
