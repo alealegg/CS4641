@@ -65,3 +65,4 @@ Working on resizing: Making all images the same size by "padding" small images t
 Machine Learning: 
 Currently researching image segmentation using image segmentation using K-means clustering (similar examples with CT scans)
 
+![test_visual](https://user-images.githubusercontent.com/84369101/125007705-d4e7a380-e02e-11eb-8b51-a25f8f1ea255.png)
