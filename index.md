@@ -105,3 +105,5 @@ Note: The images the filters were applied to were resized to (200,200) instead o
 * https://scikit-image.org/docs/dev/api/skimage.restoration.html#skimage.restoration.denoise_bilateral
 * https://medium.com/image-vision/noise-filtering-in-digital-image-processing-d12b5266847c
 * https://www.intechopen.com/books/high-resolution-neuroimaging-basic-physical-principles-and-clinical-applications/mri-medical-image-denoising-by-fundamental-filters
+* https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc
+* https://medium.com/@tarammullin/dbscan-parameter-estimation-ff8330e3a3bd
