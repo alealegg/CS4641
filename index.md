@@ -74,7 +74,7 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 
 ![Kmeans plot](https://user-images.githubusercontent.com/74310974/128102697-7046c8b1-056f-4860-bfac-47304ba74029.JPG)
 
-In the above image, the blue segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. 615 of the 1598 "cleaned" images (38%) are of non-cancerous (healthy) scans.
+In the above image, the blue segment of the visual is clearly more densely populated with data. White points indicate images with ground-truth "tumor" labels, while black points represent those images with ground-truth "healthy" labels. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. 615 of the 1598 "cleaned" images (38%) are of non-cancerous (healthy) scans.
 
 ### Clustering with DBSCAN
 We also performed a preliminary application of the DBSCAN algorithm to see if we could gain more insight on our results. 
@@ -86,7 +86,7 @@ After plotting the elbow method, we used eps = 2.5 as a rough estimate of the id
 
 ![DBSCAN Nonfiltered Images](https://user-images.githubusercontent.com/84369101/125132312-25fca380-e0d2-11eb-812d-ff926b986643.png)
 
-DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. Despite the excessive clusters, the large blue cluster appears to cluster images with an acceptable initial degree of accuracy. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). 
+DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. Despite the excessive clusters, the large blue cluster appears to group images with an acceptable initial degree of accuracy. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). 
 
 ### Applying Filters to Reduce Noise
 The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
@@ -95,9 +95,9 @@ The lack of accuracy in the results of the above clustering algorithms show that
 
 ![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023930-d2e10d00-e04d-11eb-99e5-ab07315bc27f.png)
 
-While the filter did not make any major changes to the K-Means clusters, there was a change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
+Although the K-Means clusters are tighter and have less spread, the filter did not make major improvements for K-Means. There was, however, a significant change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
 
-Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some loss of information for some images but it overall improved the model. 
+Note: The images that the filters were applied to were resized to (200,200) instead of (400,400) like those above in order to reduce the time it took to run the code. This may have resulted in some loss of information for some images, but it overall improved the model. 
 
 ### Performance Metrics
 We used several functions from sklearn to assess how effective our unsupervised learning algorithms performed.
