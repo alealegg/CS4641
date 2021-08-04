@@ -60,7 +60,7 @@ These literary references will help us decide which algorithms and models to use
 ### Data Cleaning:
 
 To convert our images to usable data, we did the following: 
-* Removed any files that are not square, RGB, JPEG images (1598 image files remained in the data set)
+* Removed any files that are not square, RGB images (1598 image files remained in the data set)
 * Converted the remaining images from RGB to grayscale and resized them to all be the same number of pixels using the skimage module
 * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
@@ -95,6 +95,33 @@ The lack of accuracy in the results of the above clustering algorithms show that
 While the filter did not make any major changes to the K-Means clusters, there was a change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
 
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some loss of information for some images but it overall improved the model. 
+
+### Performance Metrics
+We used several functions from sklearn to assess how effective our unsupervised learning algorithms performed.
+
+K-means:
+To analyze our results we used 3 metrics with output in the range [0,1], with 1 representing perfect clustering.
+
+Completeness measures if all members of a given class are in the same cluster.
+
+Homogeneity measures the degree to which clusters contain only data points that are members of a single class.
+
+Normalized mutual info returns the interdependence of the predicted and true values.
+
+*Completeness = 0.13
+*Homogeneity = 0.12
+*Normalized Mutual Info = 0.13
+
+Based on the results we can conclude that our K-means clustering algorithm did not perform well. This is corroborated by the graphs with points labelled by ground truth showing poor clustering.
+
+DBSCAN
+
+We used the Davies-Bouldin Score which measures the average similarity measure of each cluster with its most similar cluster. Ideally the value is 0.
+
+Davies-Bouldin Score = 1.43
+
+This score and our number of 21 clusters when ideally we would have only 2 indicates that the DBSCAN algorithm did not perform well for our dataset.
+
 
 ## Supervised Learning
 
