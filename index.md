@@ -114,7 +114,9 @@ Based on the results we can conclude that our K-means clustering algorithm did n
 
 DBSCAN:
 We used the Davies-Bouldin Score which measures the average similarity measure of each cluster with its most similar cluster. Ideally the value is 0.
+
 Davies-Bouldin Score = 1.43
+
 This score and our number of 21 clusters when ideally we would have only 2 indicates that the DBSCAN algorithm did not perform well for our dataset.
 
 
