@@ -124,32 +124,31 @@ This score and our number of 21 clusters when ideally we would have only 2 indic
 ## Supervised Learning
 
 ### Data Adjustments
-1. Data split into training and testing data: We randomly split our data into training and testing sets so that we would be able to test our trainted models. 80% of our data was used for traning, and 20% of our data was used for testing. 
+1. Data split into training and testing data: We randomly split our data into training and testing sets so that we would be able to test our trained models. 80% of our data was used for traning, and 20% was used for testing. 
 2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
 
 ### Neural Network
-We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy. A total of six images were misclassified (only one non-cancerous image was misclassified). 
+We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for the brain scans. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy. A total of six images were misclassified (only one non-cancerous image was misclassified). 
 
 ### SVM Classifier
-We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. A total of nine images were misclassified (only one cancerous was misclassified). 
-
+We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking at the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. A total of nine images were misclassified (only one cancerous image was misclassified). 
 
 ### Analysis
 
 #### Comparison of Classifiers
-Both classifers performed with very high and very similar accuracy rates; the neural network only slightly outperformed the SVM classifer. The neural network classifer was better at predicting the labels for non-cancerous images while the SVM classifier was better at predicting the labels for cancerous images. Overall, both were successful classfiers. 
+Both classifers performed with very high and very similar accuracy rates; the neural network only slightly outperformed the SVM classifer. The neural network classifer was better at predicting the labels for non-cancerous images, while the SVM classifier was better at predicting the labels for cancerous images. Overall, both were successful classfiers. 
 
 <img width="361" alt="Accuracy" src="https://user-images.githubusercontent.com/31289084/128103578-078d1d99-f9a6-4f5f-9bb5-6371722fd42b.png">
 
 
 #### Misclassification of Images
-We took a look at a sample of images that were misclassifed to see if we could understand why these images might have not been labeled correctly by the classifiers. 
+We took a look at a sample of images that were misclassifed to see if we could understand why these scans might have not been labeled correctly by the classifiers. 
 
 The following image was the only scan that was mislabeled by both classifiers: 
 
 ![image](https://user-images.githubusercontent.com/31289084/128103818-a4fe9d4a-13bd-4c0f-99ad-43a549d85dbe.png)
 
-This scan is a non-cancerous image but both classifiers labeled it as cancerous. This scan appears to have been taken from the front or back of the head, and the majority of images in the dataset (and therefore a majority of images used to train the model) were scans taken from the top of the brain. This could explain why the classifiers did not label this scan correctly. Additionally, other parts of the head outside of the brain appear to be visible in this scan, and these parts that show a difference in contrast could have been seen as tumors by the classifiers. For these reasons, it is not suprising that this scan was misclassified. 
+This scan is a non-cancerous image but both classifiers labeled it as cancerous. This scan appears to have been taken from the front or back of the head, and the majority of images in the dataset (and therefore a majority of images used to train the model) were scans taken of the top of the brain. This could explain why the classifiers did not label this scan correctly. Additionally, other parts of the head outside of the brain appear to be visible in this scan, and these parts could have been seen as tumors by the classifiers. For these reasons, it is not suprising that this scan was misclassified. 
 
 The following images are cancerous scans that were mislabeled as non-cancerous by the neural network classifer:
 
@@ -158,7 +157,7 @@ The following images are cancerous scans that were mislabeled as non-cancerous b
 ![brain3](https://user-images.githubusercontent.com/31289084/128104116-0bd7d7d4-4858-4d8a-a97b-6e6b20c146e6.png)
 ![brain4](https://user-images.githubusercontent.com/31289084/128104118-1c080522-ced6-4b31-989d-aab7c8afef35.png)
 
-While it is suprising that the first and fourth scans were misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obivious tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). 
+While it is suprising that the first and fourth scans were misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obvious tumor. If it hard for our human eyes to find a tumor, it is expected that it would also be hard for these classifers to find a tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). 
 
 The following images are non-cancerous scans that were mislabeled as cancerous by the SVM classifier: 
 
@@ -167,9 +166,9 @@ The following images are non-cancerous scans that were mislabeled as cancerous b
 ![brain7](https://user-images.githubusercontent.com/31289084/128104153-94aefcf3-0787-4085-9af4-864393f9fe52.png)
 ![brain8](https://user-images.githubusercontent.com/31289084/128104161-55c00174-8131-4804-aa73-a9574272b6f2.png)
 
-While it is suprising that the first and third scans were misclassified because there does not appear to be anything noticeable diffrent about these scans from the other non-cancerous scans, it is not suprising that the second and fourth scans were misclassified. The scans were taken from above like the majorty of the scans, but they also appear to include parts of the head outside of the brain, such as the eyeballs, that the classifers could have viewed as tumors. 
+While it is suprising that the first and third scans were misclassified because there does not appear to be anything noticeably different about these scans from the other non-cancerous scans, it is not suprising that the second and fourth scans were misclassified. These scans were taken from above like the majorty of the scans, but they also appear to include parts of the head outside of the brain, such as the eyeballs, that the classifers most likely viewed as tumors. 
 
-To improve the accuracy of our classifers, only brain scans taken from the top that include only the brain could be used to train and test the data. This would provide more consistency without confusing the classifers. 
+To improve the accuracy of our classifers, only brain scans taken from above that only include the brain could be used to train and test the data. This would provide more consistency without confusing the classifers. 
 
 ## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
