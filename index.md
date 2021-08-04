@@ -158,6 +158,7 @@ The following images are cancerous scans that were mislabeled as non-cancerous b
 ![brain3](https://user-images.githubusercontent.com/31289084/128104116-0bd7d7d4-4858-4d8a-a97b-6e6b20c146e6.png)
 ![brain4](https://user-images.githubusercontent.com/31289084/128104118-1c080522-ced6-4b31-989d-aab7c8afef35.png)
 
+While it is suprising that the first and fourth scans were misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obivious tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). 
 
 The following images are non-cancerous scans that were mislabeled as cancerous by the SVM classifier: 
 
@@ -166,6 +167,9 @@ The following images are non-cancerous scans that were mislabeled as cancerous b
 ![brain7](https://user-images.githubusercontent.com/31289084/128104153-94aefcf3-0787-4085-9af4-864393f9fe52.png)
 ![brain8](https://user-images.githubusercontent.com/31289084/128104161-55c00174-8131-4804-aa73-a9574272b6f2.png)
 
+While it is suprising that the first and third scans were misclassified because there does not appear to be anything noticeable diffrent about these scans from the other non-cancerous scans, it is not suprising that the second and fourth scans were misclassified. The scans were taken from above like the majorty of the scans, but they also appear to include parts of the head outside of the brain, such as the eyeballs, that the classifers could have viewed as tumors. 
+
+To improve the accuracy of our classifers, only brain scans taken from the top that include only the brain could be used to train and test the data. This would provide more consistency without confusing the classifers. 
 
 ## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
