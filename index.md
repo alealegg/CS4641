@@ -16,22 +16,20 @@ We aim to improve accuracy and reduce costs associated with human inspection by
 Our dataset contains 4600 grayscale images of X-ray scans of the human brain. The data is labelled, and 55% of the images are classified as having a tumor present and the remaining 45% are classified as healthy with no tumor present. We plan to use the techniques of image segmentation algorithms, for example Gray Level Co-occurrence matrix, to group pixels showing abnormalities that could be a tumor as well as soft clustering algorithms, such as Fuzzy C-Means, to assign pixels to groups for a probabilistic model. These methods are based on research from our references.
 
 ### Results
-We hope to develop a model that analyzes images to correctly indicate the presence of tumors. Binary classification will indicate whether a tumor is present or not. Detailed results can be seen under the Unsupervised Learning and Supervised Learning sections below.
+We hope to develop a model that analyzes images to correctly indicate the presence of tumors. Binary classification will indicate whether a tumor is present or not. Current results can be seen under the Unsupervised Learning section below.
 
 ### Discussion
 If a model could accurately determine the presence of brain tumors, healthcare workflows would experience significant boosts in speed and efficiency. With a high volume
 of scans entering the pipeline every day, radiologists and other medical professionals often find themselves overwhelmed, especially in situations where budget cuts 
 lead to understaffing. An AI specializing in brain scans would certainly alleviate bottlenecks that occur in the diagnostic process, primarily through the ability to
 produce potentially quicker and more accurate diagnoses than a certified doctor could. Consequently, this would expand doctors' bandwidth and allow them more time to
-focus on other tasks, including direct patient care. 
+focus on non-brain scans, knowing that the brain-related scans would be handled by an AI. 
 
 Perhaps most importantly, a successful implementation of such an AI would encourage healthcare experts to explore future applications of machine learning that could
 improve diagnostic medicine. For instance, an upgraded version of this project's AI might identify tumor types and suggest recommended treatment options based on the
 tumor type. To prevent machine learning from completely eliminating current jobs, AIs could simply be designed to analyze doctors' reports and flag any where the diagnosis
 doesn't match the AI's diagnosis. Doing this before delivering results to patients would save time, money, and resources that would otherwise go towards handling false
 diagnoses.
-
-For discussion on the results we gathered, see the below sections for Unsupervised and Supervised Learning.
 
 ### References
 These literary references will help us decide which algorithms and models to use in our project.
@@ -98,8 +96,22 @@ While the filter did not make any major changes to the K-Means clusters, there w
 
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some loss of information for some images but it overall improved the model. 
 
+## Supervised Learning
 
-### Resources and References Used
+### Data Adjustments
+1. Data split into training and testing data: We randomly split our data into training and testing sets so that we would be able to test our trainted models. 80% of our data was used for traning, and 20% of our data was used for testing. 
+2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
+
+### Neural Network
+We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy.
+
+### SVM Classifier
+We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. 
+
+
+### Analysis
+
+## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
 * https://machinelearningmastery.com/how-to-manually-scale-image-pixel-data-for-deep-learning/, 
 * https://note.nkmk.me/en/python-numpy-image-processing/
