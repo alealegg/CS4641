@@ -157,7 +157,7 @@ The following images are cancerous scans that were mislabeled as non-cancerous b
 ![brain3](https://user-images.githubusercontent.com/31289084/128104116-0bd7d7d4-4858-4d8a-a97b-6e6b20c146e6.png)
 ![brain4](https://user-images.githubusercontent.com/31289084/128104118-1c080522-ced6-4b31-989d-aab7c8afef35.png)
 
-While it is suprising that the first and fourth scans were misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obvious tumor. If it hard for our human eyes to find a tumor, it is expected that it would also be hard for these classifers to find a tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). 
+While it is suprising that the first scan was misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obvious tumor. If it hard for our human eyes to find a tumor, it is expected that it would also be hard for these classifers to find a tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). The fourth scan does have a clear tumor, but the difference in constrast between the tumor and the rest of the brain might not be strong enough for the classifier to notice it. 
 
 The following images are non-cancerous scans that were mislabeled as cancerous by the SVM classifier: 
 
