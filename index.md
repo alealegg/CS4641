@@ -72,7 +72,7 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 
 ![Kmeans plot](https://user-images.githubusercontent.com/74310974/128102697-7046c8b1-056f-4860-bfac-47304ba74029.JPG)
 
-In the above image, the orange segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. The ground truth is represented by the color of the points where white points are images with tumors and black points are healthy images. It is clear that the healthy images are clustered poorly. To improve the overall clustering, we should incorporate a greater volume of "healthy" images in our cleaned data. Doing so may improve the model's performance and allow us to see the two clusters more definitively. Currently 615 of the 1599 "cleaned" images (38%) are of non-cancerous (healthy) scans.
+In the above image, the orange segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. To improve the overall clustering, we should incorporate a greater volume of "healthy" images in our cleaned data. Doing so may improve the model's performance and allow us to see the two clusters more definitively. Currently 615 of the 1599 "cleaned" images (38%) are of non-cancerous (healthy) scans.
 
 ### Clustering with DBSCAN
 We also performed a preliminary application of the DBSCAN algorithm to see if we could gain more insight on our results. 
@@ -128,14 +128,43 @@ This score and our number of 21 clusters when ideally we would have only 2 indic
 2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
 
 ### Neural Network
-We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy.
+We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy. A total of six images were misclassified (only one non-cancerous image was misclassified). 
 
 ### SVM Classifier
-We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. 
+We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. A total of nine images were misclassified (only one cancerous was misclassified). 
 
 
 ### Analysis
 
+#### Comparison of Classifiers
+Both classifers performed with very high and very similar accuracy rates; the neural network only slightly outperformed the SVM classifer. The neural network classifer was better at predicting the labels for non-cancerous images while the SVM classifier was better at predicting the labels for cancerous images. Overall, both were successful classfiers. 
+
+<img width="361" alt="Accuracy" src="https://user-images.githubusercontent.com/31289084/128103578-078d1d99-f9a6-4f5f-9bb5-6371722fd42b.png">
+
+
+#### Misclassification of Images
+We took a look at a sample of images that were misclassifed to see if we could understand why these images might have not been labeled correctly by the classifiers. 
+
+The following image was the only scan that was mislabeled by both classifiers: 
+
+![image](https://user-images.githubusercontent.com/31289084/128103818-a4fe9d4a-13bd-4c0f-99ad-43a549d85dbe.png)
+
+This scan is a non-cancerous image but both classifiers labeled it as cancerous. This scan appears to have been taken from the front or back of the head, and the majority of images in the dataset (and therefore a majority of images used to train the model) were scans taken from the top of the brain. This could explain why the classifiers did not label this scan correctly. Additionally, other parts of the head outside of the brain appear to be visible in this scan, and these parts that show a difference in contrast could have been seen as tumors by the classifiers. For these reasons, it is not suprising that this scan was misclassified. 
+
+The following images are cancerous scans that were mislabeled as non-cancerous by the neural network classifer:
+
+![brain](https://user-images.githubusercontent.com/31289084/128104101-aae1f5c3-c3ae-4b12-9149-dc99980e76cc.png)
+![brain2](https://user-images.githubusercontent.com/31289084/128104109-c0c7e284-57d0-4014-8e44-c91426500b33.png)
+![brain3](https://user-images.githubusercontent.com/31289084/128104116-0bd7d7d4-4858-4d8a-a97b-6e6b20c146e6.png)
+![brain4](https://user-images.githubusercontent.com/31289084/128104118-1c080522-ced6-4b31-989d-aab7c8afef35.png)
+
+
+The following images are non-cancerous scans that were mislabeled as cancerous by the SVM classifier: 
+
+![brain5](https://user-images.githubusercontent.com/31289084/128104127-4a2bc98f-742c-4d3d-8bdf-48256ca7aa5f.png)
+![brain6](https://user-images.githubusercontent.com/31289084/128104147-0951111a-11fd-4d68-9f7c-a86172dbc2e3.png)
+![brain7](https://user-images.githubusercontent.com/31289084/128104153-94aefcf3-0787-4085-9af4-864393f9fe52.png)
+![brain8](https://user-images.githubusercontent.com/31289084/128104161-55c00174-8131-4804-aa73-a9574272b6f2.png)
 
 
 ## Resources and References Used
