@@ -89,7 +89,7 @@ After plotting the elbow method, we used eps = 2.5 as a rough estimate of the id
 DBSCAN with these parameters generated 40 clusters, which we immediately knew was too many. Despite the excessive clusters, the large blue cluster appears to group images with an acceptable initial degree of accuracy. To try and improve the performance of the DBSCAN algorithm, we filtered the images to reduce noise in the data (discussed below) and used the optimal eps, which is equal to 2.1 (also discussed below). 
 
 ### Applying Filters to Reduce Noise
-The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
+The lack of accuracy in the results of the above clustering algorithms shows that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
 
 ![Kmeans filtered](https://user-images.githubusercontent.com/74310974/128102709-b2ef5485-3845-45c6-b8cd-b6e1aed48666.JPG)
 
