@@ -17,7 +17,7 @@ We aim to improve accuracy and reduce costs associated with human inspection by
 Our dataset contains 4600 grayscale images of X-ray scans of the human brain. The data is labelled, and 55% of the images are classified as having a tumor present and the remaining 45% are classified as healthy with no tumor present. We plan to use the techniques of image segmentation algorithms, for example Gray Level Co-occurrence matrix, to group pixels showing abnormalities that could be a tumor as well as soft clustering algorithms, such as Fuzzy C-Means, to assign pixels to groups for a probabilistic model. These methods are based on research from our references.
 
 ### Results
-We hope to develop a model that analyzes images to correctly indicate the presence of tumors. Binary classification will indicate whether a tumor is present or not. Current results can be seen under the Unsupervised Learning section below.
+We hope to develop a model that analyzes images to correctly indicate the presence of tumors. Binary classification will indicate whether a tumor is present or not. Results can be seen under the Unsupervised Learning and Supervised Learning sections below.
 
 ### Discussion
 If a model could accurately determine the presence of brain tumors, healthcare workflows would experience significant boosts in speed and efficiency. With a high volume
@@ -31,6 +31,8 @@ improve diagnostic medicine. For instance, an upgraded version of this project's
 tumor type. To prevent machine learning from completely eliminating current jobs, AIs could simply be designed to analyze doctors' reports and flag any where the diagnosis
 doesn't match the AI's diagnosis. Doing this before delivering results to patients would save time, money, and resources that would otherwise go towards handling false
 diagnoses.
+
+Further discussion and analysis can be seen under the Unsupervised and Supervised Learning sections below.
 
 ### References
 These literary references will help us decide which algorithms and models to use in our project.
@@ -157,7 +159,7 @@ The following images are cancerous scans that were mislabeled as non-cancerous b
 ![brain3](https://user-images.githubusercontent.com/31289084/128104116-0bd7d7d4-4858-4d8a-a97b-6e6b20c146e6.png)
 ![brain4](https://user-images.githubusercontent.com/31289084/128104118-1c080522-ced6-4b31-989d-aab7c8afef35.png)
 
-While it is suprising that the first scan was misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obvious tumor. If it hard for our human eyes to find a tumor, it is expected that it would also be hard for these classifers to find a tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). The fourth scan does have a clear tumor, but the difference in constrast between the tumor and the rest of the brain might not be strong enough for the classifier to notice it. 
+While it is suprising that the first and fourth scans were misclassified because there appears to be an obvious tumor, it is not suprising that the second scan was misclassified as there does not appear to be an obvious tumor. If it hard for our human eyes to find a tumor, it is expected that it would also be hard for these classifers to find a tumor. It is also not suprising that the third scan was misclassified because it is also a scan taken from a different view of the majority of the data (like the first scan discussed above). 
 
 The following images are non-cancerous scans that were mislabeled as cancerous by the SVM classifier: 
 
