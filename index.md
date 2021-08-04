@@ -126,7 +126,7 @@ This score and our number of 21 clusters when ideally we would have only 2 indic
 ## Supervised Learning
 
 ### Data Adjustments
-1. Data split into training and testing data: We randomly split our data into training and testing sets so that we would be able to test our trained models. 80% of our data was used for traning, and 20% was used for testing. 
+1. Data split into training and testing data: We randomly split our data into training and testing sets so that we would be able to test our trained models. 80% of our data was used for training, and 20% was used for testing. 
 2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
 
 ### Neural Network
