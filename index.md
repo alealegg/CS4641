@@ -74,7 +74,7 @@ We applied the K-Means algorithm using the sklearn.cluster module where n = 2 cl
 
 ![Kmeans plot](https://user-images.githubusercontent.com/74310974/128102697-7046c8b1-056f-4860-bfac-47304ba74029.JPG)
 
-In the above image, the orange segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. To improve the overall clustering, we should incorporate a greater volume of "healthy" images in our cleaned data. Doing so may improve the model's performance and allow us to see the two clusters more definitively. Currently 615 of the 1599 "cleaned" images (38%) are of non-cancerous (healthy) scans.
+In the above image, the blue segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. 615 of the 1598 "cleaned" images (38%) are of non-cancerous (healthy) scans.
 
 ### Clustering with DBSCAN
 We also performed a preliminary application of the DBSCAN algorithm to see if we could gain more insight on our results. 
