@@ -136,17 +136,7 @@ We used an SVM Classifier from the sklearn svm module to train and test another 
 
 ### Analysis
 
-SVM Images {
 
-![Not Cancer  (1)](https://user-images.githubusercontent.com/74310974/128102944-09d984e8-2d28-416b-86ab-a375f6e00c19.jpg)
-![Not Cancer  (469)](https://user-images.githubusercontent.com/74310974/128102945-bebaf44a-b577-4099-a6d8-f5f61aa18fda.jpg)
-![Not Cancer  (2)](https://user-images.githubusercontent.com/74310974/128102946-cdfcacc0-b393-4bd1-9a22-e1ccbbe3ef8f.jpg)
-![Not Cancer  (474)](https://user-images.githubusercontent.com/74310974/128102948-e3c1ff91-28e3-4282-ba3d-e0ae1c3fe0e7.jpg)
-![Not Cancer  (499)](https://user-images.githubusercontent.com/74310974/128102950-c58b0b7e-a8a0-4b47-9229-aed48e73a4d7.jpg)
-![Not Cancer  (1031)](https://user-images.githubusercontent.com/74310974/128102951-868f14a8-8373-4a91-93bb-a67cc2f49574.jpg) 
-![Cancer (1679)](https://user-images.githubusercontent.com/84369101/128103112-8d570cc9-0c67-49d2-ae1d-65b38f905214.jpg)
-
-}
 
 ## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
