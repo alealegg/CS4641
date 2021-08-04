@@ -128,25 +128,23 @@ This score and our number of 21 clusters when ideally we would have only 2 indic
 2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
 
 ### Neural Network
-We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy.
+We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy. A total of six images were misclassified (only one non-cancerous image was misclassified). 
 
 ### SVM Classifier
-We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. 
+We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. A total of nine images were misclassified (only one cancerous was misclassified). 
 
 
 ### Analysis
 
-SVM Images {
+#### Comparison of Classifiers
+Both classifers performed with very high and very similar accuracy rates; the neural network only slightly outperformed the SVM classifer. The neural network classifer was better at predicting the labels for non-cancerous images while the SVM classifier was better at predicting the labels for cancerous images. Overall, both were successful classfiers. 
 
-![Not Cancer  (1)](https://user-images.githubusercontent.com/74310974/128102944-09d984e8-2d28-416b-86ab-a375f6e00c19.jpg)
-![Not Cancer  (469)](https://user-images.githubusercontent.com/74310974/128102945-bebaf44a-b577-4099-a6d8-f5f61aa18fda.jpg)
-![Not Cancer  (2)](https://user-images.githubusercontent.com/74310974/128102946-cdfcacc0-b393-4bd1-9a22-e1ccbbe3ef8f.jpg)
-![Not Cancer  (474)](https://user-images.githubusercontent.com/74310974/128102948-e3c1ff91-28e3-4282-ba3d-e0ae1c3fe0e7.jpg)
-![Not Cancer  (499)](https://user-images.githubusercontent.com/74310974/128102950-c58b0b7e-a8a0-4b47-9229-aed48e73a4d7.jpg)
-![Not Cancer  (1031)](https://user-images.githubusercontent.com/74310974/128102951-868f14a8-8373-4a91-93bb-a67cc2f49574.jpg) 
-![Cancer (1679)](https://user-images.githubusercontent.com/84369101/128103112-8d570cc9-0c67-49d2-ae1d-65b38f905214.jpg)
+<img width="361" alt="Accuracy" src="https://user-images.githubusercontent.com/31289084/128103578-078d1d99-f9a6-4f5f-9bb5-6371722fd42b.png">
 
-}
+
+#### Misclassification of Images
+
+
 
 ## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
