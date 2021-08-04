@@ -1,3 +1,4 @@
+
 # Predicting Whether a Patient Has a Brain Tumor From a Brain Scan
 
 **Team Members:** Alea Legg, Brennan Oconnor, Mark Wetherly
@@ -143,6 +144,7 @@ SVM Images {
 ![Not Cancer  (474)](https://user-images.githubusercontent.com/74310974/128102948-e3c1ff91-28e3-4282-ba3d-e0ae1c3fe0e7.jpg)
 ![Not Cancer  (499)](https://user-images.githubusercontent.com/74310974/128102950-c58b0b7e-a8a0-4b47-9229-aed48e73a4d7.jpg)
 ![Not Cancer  (1031)](https://user-images.githubusercontent.com/74310974/128102951-868f14a8-8373-4a91-93bb-a67cc2f49574.jpg) 
+![Cancer (1679)](https://user-images.githubusercontent.com/84369101/128103112-8d570cc9-0c67-49d2-ae1d-65b38f905214.jpg)
 
 }
 
