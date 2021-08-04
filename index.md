@@ -60,7 +60,7 @@ These literary references will help us decide which algorithms and models to use
 ### Data Cleaning:
 
 To convert our images to usable data, we did the following: 
-* Removed any files that are not square, RGB, JPEG images (1598 image files remained in the data set)
+* Removed any files that are not square, RGB images (1598 image files remained in the data set)
 * Converted the remaining images from RGB to grayscale and resized them to all be the same number of pixels using the skimage module
 * Created a dataframe where each column represented a pixel, each row represented an image, and each value represented that image's pixel's intensity 
 
@@ -69,7 +69,7 @@ Once we cleaned and organized our data, we ran unsupervised machine learning tec
 ### Clustering with K-Means
 We applied the K-Means algorithm using the sklearn.cluster module where n = 2 clusters because ideally the model would group the images into two categories: healthy scans and brain tumor scans. We also applied Principle Component Analysis (PCA) to reduce the dimensionality of the data. Since the data has a very large set of features (one feature for each pixel), PCA allows us to reduce the number of features while still maintaining most of the information that the features provide. PCA also allowed us to visualize the images in their clusters. 
 
-![kmeans](https://user-images.githubusercontent.com/31289084/125023981-ec825480-e04d-11eb-8111-561aed4631a2.png)
+![Kmeans plot](https://user-images.githubusercontent.com/74310974/128102697-7046c8b1-056f-4860-bfac-47304ba74029.JPG)
 
 In the above image, the orange segment of the visual is clearly more densely populated with data. Since our current cleaned data is mainly made up of cancerous scans, it is possible that the model may have had a slight bias during clustering analysis. To improve the overall clustering, we should incorporate a greater volume of "healthy" images in our cleaned data. Doing so may improve the model's performance and allow us to see the two clusters more definitively. Currently 615 of the 1599 "cleaned" images (38%) are of non-cancerous (healthy) scans.
 
@@ -88,13 +88,37 @@ DBSCAN with these parameters generated 40 clusters, which we immediately knew wa
 ### Applying Filters to Reduce Noise
 The lack of accuracy in the results of the above clustering algorithms show that our images probably contain a lot of noise. We applied a filter to reduce this noise in the hopes of attaining more accurate clustering. Based on some research, MRI images are prone to Gaussian noise, and a bilateral filter is one type of filter than can reduce this type of noise. After appling the filter to the images and running the same algorithms as above, we obtained the following results: 
 
-![kmeans_filtered](https://user-images.githubusercontent.com/31289084/125023785-90b7cb80-e04d-11eb-95b3-2a414e604983.png)
+![Kmeans filtered](https://user-images.githubusercontent.com/74310974/128102709-b2ef5485-3845-45c6-b8cd-b6e1aed48666.JPG)
 
 ![dbscan_filtered](https://user-images.githubusercontent.com/31289084/125023930-d2e10d00-e04d-11eb-99e5-ab07315bc27f.png)
 
 While the filter did not make any major changes to the K-Means clusters, there was a change to the DBSCAN clusters. When using the optimal epsilon for the filtered images, the DBSCAN algorithm clustered the images into 21 groups. While this is still much larger than the ideal 2 groups, it is a major improvement from the first DBSCAN algorithm (run on the images before applying the filter) which clustered the images into 40 groups. So even though there is still noise that prevents the model from being accurate, some noise was removed from the original images which improved the accuracy compared to the first DBSCAN clusters. Some other steps that could be taken to reduce noise might include applying more filters and/or removing outliers. 
 
 Note: The images the filters were applied to were resized to (200,200) instead of (400,400) like above to reduce the time it took to run the code. This may have resulted in some loss of information for some images but it overall improved the model. 
+
+### Performance Metrics
+We used several functions from sklearn to assess how effective our unsupervised learning algorithms performed.
+
+K-means:
+To analyze our results we used 3 metrics with output in the range [0,1], with 1 representing perfect clustering.
+
+Completeness measures if all members of a given class are in the same cluster.
+Homogeneity measures the degree to which clusters contain only data points that are members of a single class.
+Normalized mutual info returns the interdependence of the predicted and true values.
+
+* Completeness = 0.13
+* Homogeneity = 0.12
+* Normalized Mutual Info = 0.13
+
+Based on the results we can conclude that our K-means clustering algorithm did not perform well. This is corroborated by the graphs with points labelled by ground truth showing poor clustering.
+
+DBSCAN:
+We used the Davies-Bouldin Score which measures the average similarity measure of each cluster with its most similar cluster. Ideally the value is 0.
+
+Davies-Bouldin Score = 1.43
+
+This score and our number of 21 clusters when ideally we would have only 2 indicates that the DBSCAN algorithm did not perform well for our dataset.
+
 
 ## Supervised Learning
 
@@ -103,44 +127,13 @@ Note: The images the filters were applied to were resized to (200,200) instead o
 2. Addition of labels: Using the true labels of the images will allow us to test how accurate our models are by comparing the true/actual labels with the predicted labels. 
 
 ### Neural Network
-We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy. A total of six images were misclassified, and only one of them was a non-cancerous scan. 
+We used an MLP Classifier from the sklearn neural network module to train and test a neural network classifer. After exprimenting with different combinations of activation functions, solver types, and network shapes, we determined that a classifier using a relu activation function with lgbs solver and 3 hidden layers with 30, 20, and 10 nodes would best predict labels for our data. Our final classifer predicted the labels with 98.2% accuracy. We also looked at the success rates for each class of images: the classifer predicted labels for images with no tumors with 99.2% accuracy and predicted labels for images with tumors with 97.6% accuracy.
 
 ### SVM Classifier
-We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. A total of nine images were misclassifed, and only one of them was cancerous scan. 
+We used an SVM Classifier from the sklearn svm module to train and test another classifer. This classifer predicted the labels with 97.3% accuracy. When looking a the accuracy of the classes individually, the success rate for labeling images with no tumor was 93.7%, and the success rate for labeling images with a tumor was 99.5%. 
+
 
 ### Analysis
-
-#### Comparison of Classifiers
-Overall, the two classifiers performed with about the same accuracy; the nerual network only slightly outperformed the SVM classifier. The neural network classifer better predicted the labels of images with no tumors while the SVM classifer better predicted images without tumors. In the end, both classifers had very high success rates. 
-
-<img width="361" alt="Accuracy" src="https://user-images.githubusercontent.com/31289084/128101308-a31915e8-970c-4bd9-8811-4c56ece383ca.png">
-
-#### Misclassified Images
-We analyzed a sample of the misclassified images to determine if there were any patterns in the misclassifications. 
-
-The following image is the only image that was misclassifed by both classifers: 
-
-![image](https://user-images.githubusercontent.com/31289084/128101493-9f35f092-0ed9-4dc2-a279-41e91ff1d1c9.png)
-
-This is a non-cancerous image that was labeled by both classifers as cancerous. This is not surprising because the majority of the images in the dataset, and therefore the majority of the images used to train the model, were brain scans taken from the top of the brain. This scan appears to be taken from the front or back of the head and seems to show parts of the head other than the brain that the classifiers might assume to be tumor. 
-
-The following images are all images with a tumor that were labeled as non-cancerous by the nerual network classifer: 
-
-![brain](https://user-images.githubusercontent.com/31289084/128101897-5b444cdb-40ab-4b2f-a0dc-048e472aedad.png)
-![brain2](https://user-images.githubusercontent.com/31289084/128101969-f5c9f4c1-0dfa-4ed4-83bb-d98c3b45635e.png)
-![brain3](https://user-images.githubusercontent.com/31289084/128101974-9fc20b0c-abbc-463f-a9d9-400d97f544dd.png)
-![brain4](https://user-images.githubusercontent.com/31289084/128101977-a2b803ec-4419-4aae-a970-f8a6c2703ae4.png)
-
-
-The following images are all images without tumors that were labeled as cancerous by the SVM classifier: 
-
-![brain5](https://user-images.githubusercontent.com/31289084/128102041-de06edb5-4f24-461d-9dc6-c25c9fd36f40.png)
-![brain6](https://user-images.githubusercontent.com/31289084/128102043-aef4d434-26da-4039-afa6-85d2756be999.png)
-![brain7](https://user-images.githubusercontent.com/31289084/128102094-3b01acb4-d855-409c-a3ca-0165b2c684b8.png)
-![brain8](https://user-images.githubusercontent.com/31289084/128102053-f2eb844b-b67c-4523-84e8-96ea2cceb6e5.png)
-
-
-
 
 ## Resources and References Used
 * https://aidancoco.medium.com/data-cleaning-for-image-classification-de9439ac1075
@@ -155,5 +148,3 @@ The following images are all images without tumors that were labeled as cancerou
 * https://www.intechopen.com/books/high-resolution-neuroimaging-basic-physical-principles-and-clinical-applications/mri-medical-image-denoising-by-fundamental-filters
 * https://towardsdatascience.com/machine-learning-clustering-dbscan-determine-the-optimal-value-for-epsilon-eps-python-example-3100091cfbc
 * https://medium.com/@tarammullin/dbscan-parameter-estimation-ff8330e3a3bd
-* https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html
-* https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC
