@@ -99,28 +99,28 @@ Note: The images the filters were applied to were resized to (200,200) instead o
 ### Performance Metrics
 We used several functions from sklearn to assess how effective our unsupervised learning algorithms performed.
 
-K-means:
-To analyze our results we used 3 metrics with output in the range [0,1], with 1 representing perfect clustering.
+    K-means:
+        To analyze our results we used 3 metrics with output in the range [0,1], with 1 representing perfect clustering.
 
-Completeness measures if all members of a given class are in the same cluster.
+        Completeness measures if all members of a given class are in the same cluster.
 
-Homogeneity measures the degree to which clusters contain only data points that are members of a single class.
+        Homogeneity measures the degree to which clusters contain only data points that are members of a single class.
 
-Normalized mutual info returns the interdependence of the predicted and true values.
+        Normalized mutual info returns the interdependence of the predicted and true values.
 
-*Completeness = 0.13
-*Homogeneity = 0.12
-*Normalized Mutual Info = 0.13
+        * Completeness = 0.13
+        * Homogeneity = 0.12
+        * Normalized Mutual Info = 0.13
 
-Based on the results we can conclude that our K-means clustering algorithm did not perform well. This is corroborated by the graphs with points labelled by ground truth showing poor clustering.
+        Based on the results we can conclude that our K-means clustering algorithm did not perform well. This is corroborated by the graphs with points labelled by ground truth showing poor clustering.
+        
+        DBSCAN:
 
-DBSCAN
+        We used the Davies-Bouldin Score which measures the average similarity measure of each cluster with its most similar cluster. Ideally the value is 0.
 
-We used the Davies-Bouldin Score which measures the average similarity measure of each cluster with its most similar cluster. Ideally the value is 0.
+        Davies-Bouldin Score = 1.43
 
-Davies-Bouldin Score = 1.43
-
-This score and our number of 21 clusters when ideally we would have only 2 indicates that the DBSCAN algorithm did not perform well for our dataset.
+        This score and our number of 21 clusters when ideally we would have only 2 indicates that the DBSCAN algorithm did not perform well for our dataset.
 
 
 ## Supervised Learning
